@@ -1,2 +1,2 @@
 # PHP_S
-PHP lang basics
+PHP language basics
