@@ -1,0 +1,39 @@
+<?php
+
+/*
+Sessions are a way to store information (in vars) to be used across multiple pages.
+it is stored on the server side unlike cookies
+*/
+
+session_start(); //indicating that a session started
+
+if(isset($_POST['submit'])){
+    $username = htmlspecialchars($_POST['name']);
+    $password = $_POST['password'];
+
+    if($username == 'Joe' && $password == 'password'){
+        $_SESSION['username'] = $username;
+        header('PHP_S/extras/dashboard.php');
+    } else{
+        echo 'INCORRECT';
+    }
+    //we can use filter_input(INPUT_POST, 'name', [sanitizing rules]) to filter it
+    // we can use SANITIZE_SPECIAL_CHARS as a filtering rule in a form 
+    }//To avoid showing an error when values are not set
+    
+    
+    ?>
+    
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>?name = Jhon & age = 30">Click</a> 
+    <!-- brings u to the file we working in -->
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+    <!-- Using post is more secure than using GET method in forms -->
+    <!--you use GET unstead if you are not submitting any data -->
+        <div>
+            <label for="username">Username: </label>
+                <input type="text" name="name">
+            <label for="password">Password: </label>
+                <input type="password" name="password">
+        </div>
+        <input type="submit" value="Submit" name="submit">
+    </form>
